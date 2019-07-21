@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.excellent01</groupId>
+    <artifactId>BestEverything</artifactId>
+    <version>1.0.0</version>
+
+    <!--打包格式 jar-->
+    <packaging>jar</packaging>
+    <!--项目名称-->
+    <name>BestEverything</name>
+    <!--项目描述-->
+    <description>最好的Everything项目</description>
+    <!--开发者信息-->
+    <developers>
+        <developer>
+            <id>01</id>
+            <name>plg</name>
+            <email>2418512129@qq.com</email>
+            <roles>
+                <role>Creator</role>
+                <role>Developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <!--属性信息-->
+    <properties>
+        <encoding>UTF-8</encoding>
+        <java.version>1.8</java.version>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+    </properties>
+
+    <!--项目依赖-->
+    <dependencies>
+
+        <!--Lombox插件依赖的库-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.8</version>
+        </dependency>
+
+        <!--H2数据库 + 驱动（JDBC）-->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.197</version>
+        </dependency>
+
+    </dependencies>
+
+    <!--配置构建信息-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
+            </plugin>
+
+            <!--打包插件-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <!--配置主类-->
+                            <mainClass>com.xust.everything.cmd.BestEverything</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+
+    </build>
+
+
+</project>
