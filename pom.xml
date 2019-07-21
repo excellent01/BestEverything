@@ -52,6 +52,14 @@
             <version>1.4.197</version>
         </dependency>
 
+        <!--数据库的连接池-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.14</version>
+        </dependency>
+
+
     </dependencies>
 
     <!--配置构建信息-->

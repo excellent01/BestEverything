@@ -1,0 +1,82 @@
+2019-07-21 18:01:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE DATABASE[*] IF NOT EXISTS BEST_EVERYTHING;DROP TABLE IF EXISTS FILE_INDEX;CREATE TABLE IF NOT EXISTS FILE_INDEX(    NAME VARCHAR(256)   NOT NULL COMMENT '文件名称',    PATH VARCHAR (2048) NOT NULL COMMENT '文件路径',    DEPTH INT            NOT NULL COMMENT '文件深度',    FILE_TYPE VARCHAR (32) NOT NULL COMMENT'文件类型'); "; expected "OR, FORCE, VIEW, ALIAS, SEQUENCE, USER, TRIGGER, ROLE, SCHEMA, CONSTANT, DOMAIN, TYPE, DATATYPE, AGGREGATE, LINKED, MEMORY, CACHED, LOCAL, GLOBAL, TEMP, TEMPORARY, TABLE, SYNONYM, PRIMARY, UNIQUE, HASH, SPATIAL, INDEX"; SQL statement:
+create database if not exists best_everything;drop table if exists file_index;create table if not exists file_index(    name varchar(256)   not null comment '文件名称',    path varchar (2048) not null comment '文件路径',    depth int            not null comment '文件深度',    file_type varchar (32) not null comment'文件类型'); [42001-197]
+2019-07-21 19:26:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement " select name,path,depth,file_type from file_index  where  name like [*]'%简历%  order by depth Asc limit 1 offset 0 "; SQL statement:
+ select name,path,depth,file_type from file_index  where  name like '%简历%  order by depth Asc limit 1 offset 0  [42000-197]
+2019-07-21 19:30:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "DOC" not found; SQL statement:
+ select name,path,depth,file_type from file_index  where  name like '%简历%'  and file_type = DOC order by depth Asc limit 2 offset 0  [42122-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:150)
+	at org.h2.expression.Comparison.optimize(Comparison.java:179)
+	at org.h2.expression.ConditionAndOr.optimize(ConditionAndOr.java:131)
+	at org.h2.command.dml.Select.prepare(Select.java:861)
+	at org.h2.command.Parser.prepareCommand(Parser.java:283)
+	at org.h2.engine.Session.prepareLocal(Session.java:611)
+	at org.h2.engine.Session.prepareCommand(Session.java:549)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1247)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:76)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:304)
+	at com.alibaba.druid.pool.DruidPooledConnection.prepareStatement(DruidPooledConnection.java:318)
+	at com.xust.everything.core.dao.impl.FileIndexImpl.search(FileIndexImpl.java:99)
+	at com.xust.everything.core.dao.impl.FileIndexImpl.main(FileIndexImpl.java:156)
+2019-07-21 19:32:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "IMG" not found; SQL statement:
+ select name,path,depth,file_type from file_index  where  name like '%简历%'  and file_type = IMG order by depth Asc limit 2 offset 0  [42122-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:150)
+	at org.h2.expression.Comparison.optimize(Comparison.java:179)
+	at org.h2.expression.ConditionAndOr.optimize(ConditionAndOr.java:131)
+	at org.h2.command.dml.Select.prepare(Select.java:861)
+	at org.h2.command.Parser.prepareCommand(Parser.java:283)
+	at org.h2.engine.Session.prepareLocal(Session.java:611)
+	at org.h2.engine.Session.prepareCommand(Session.java:549)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1247)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:76)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:304)
+	at com.alibaba.druid.pool.DruidPooledConnection.prepareStatement(DruidPooledConnection.java:318)
+	at com.xust.everything.core.dao.impl.FileIndexImpl.search(FileIndexImpl.java:99)
+	at com.xust.everything.core.dao.impl.FileIndexImpl.main(FileIndexImpl.java:156)
+2019-07-21 19:36:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "DOC" not found; SQL statement:
+ select name,path,depth,file_type from file_index  where  name like '%简历%'  and file_type = DOC order by depth Asc limit 2 offset 0  [42122-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:150)
+	at org.h2.expression.Comparison.optimize(Comparison.java:179)
+	at org.h2.expression.ConditionAndOr.optimize(ConditionAndOr.java:131)
+	at org.h2.command.dml.Select.prepare(Select.java:861)
+	at org.h2.command.Parser.prepareCommand(Parser.java:283)
+	at org.h2.engine.Session.prepareLocal(Session.java:611)
+	at org.h2.engine.Session.prepareCommand(Session.java:549)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1247)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:76)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:304)
+	at com.alibaba.druid.pool.DruidPooledConnection.prepareStatement(DruidPooledConnection.java:318)
+	at com.xust.everything.core.dao.impl.FileIndexImpl.search(FileIndexImpl.java:99)
+	at com.xust.everything.core.dao.impl.FileIndexImpl.main(FileIndexImpl.java:155)
+2019-07-21 19:41:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "DOC" not found; SQL statement:
+ select name,path,depth,file_type from file_index  where  name like '%简历%'  and file_type = DOC order by depth Asc limit 2 offset 0  [42122-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:150)
+	at org.h2.expression.Comparison.optimize(Comparison.java:179)
+	at org.h2.expression.ConditionAndOr.optimize(ConditionAndOr.java:131)
+	at org.h2.command.dml.Select.prepare(Select.java:861)
+	at org.h2.command.Parser.prepareCommand(Parser.java:283)
+	at org.h2.engine.Session.prepareLocal(Session.java:611)
+	at org.h2.engine.Session.prepareCommand(Session.java:549)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1247)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:76)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:304)
+	at com.alibaba.druid.pool.DruidPooledConnection.prepareStatement(DruidPooledConnection.java:318)
+	at com.xust.everything.core.dao.impl.FileIndexImpl.search(FileIndexImpl.java:99)
+	at com.xust.everything.core.dao.impl.FileIndexImpl.main(FileIndexImpl.java:156)
