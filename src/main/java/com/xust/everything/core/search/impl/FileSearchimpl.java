@@ -17,6 +17,8 @@ public class FileSearchimpl implements FileSearch {
     }
     @Override
     public List<Thing> search(Condition condition) {
+        if(condition != null)
         return fileIndexDao.search(condition);
+        return null;
     }
 }

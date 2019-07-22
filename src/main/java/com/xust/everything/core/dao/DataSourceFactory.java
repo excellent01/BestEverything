@@ -13,7 +13,6 @@ import java.sql.SQLException;
  * @date 2019/7/21 17:06
  */
 public final class DataSourceFactory {
-
     private static volatile DruidDataSource dataSource;
     private DataSourceFactory(){
     }

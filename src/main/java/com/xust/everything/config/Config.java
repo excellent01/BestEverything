@@ -26,20 +26,31 @@ public class Config {
      */
     private Set<String> excludePath = new HashSet<>();
 
+    //TODO  可配置的参数
+
+    /**
+     * 检索最大的返回值数量
+     */
+    private Integer maxReturn = 30;
+
+    /**
+     * 默认升序，即先查出浅的
+     */
+    private Boolean deptOrderAsc = true;
+
+    /**
+     * H2数据库文件路径
+     */
     private Config(){}
-    public static Config getInstance(){
-        // 获取文件系统
+
+    private static void initDefaultConfig(){
         FileSystem fileSystem = FileSystems.getDefault();
-
         Iterable<Path> iterable = fileSystem.getRootDirectories();
-
         // 包含路径
         iterable.forEach(path -> {config.getIncludePath().add(path.toString());});
         //在Windows下：  C:\Windows,   C:\Program Files,   C:\Program Files (x86), C:\ProgramData
         //在linux下： /tmp  /etc
-
         String osNamm = System.getProperty("os.name");
-
         //排除文件
         if(osNamm.startsWith("Windows")){
             config.getExcludePath().add("C:\\Windows");
@@ -50,6 +61,11 @@ public class Config {
             config.getExcludePath().add("/tmp");
             config.getExcludePath().add("/etc");
         }
+    }
+
+    public static Config getInstance(){
+        // 参数初始化
+        initDefaultConfig();
         return config;
     }
 

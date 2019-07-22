@@ -42,7 +42,6 @@ public class FileIndexImpl implements FileIndex {
                 }
             }
         }
-
         // File DIrectory
         // 将最终获得的文件进行拦截处理
         for(FileInterceptor interceptor : this.interceptors){

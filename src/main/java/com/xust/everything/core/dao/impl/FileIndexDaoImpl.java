@@ -47,6 +47,7 @@ public class FileIndexDaoImpl implements FileIndexDao {
     @Override
     public List<Thing> search(Condition condition) {
 
+
         //名称模糊匹配  like
         String name = condition.getName();
         // 类型精确匹配 =
@@ -55,7 +56,6 @@ public class FileIndexDaoImpl implements FileIndexDao {
         String limit = condition.getLimit() + "";
         // 排序显示
         String sort = condition.getOrderByASC() ? "Asc" : "Desc";
-
         StringBuilder sql = new StringBuilder();
         sql.append(" select name,path,depth,file_type from file_index ");
         sql.append(" where ")
@@ -69,7 +69,6 @@ public class FileIndexDaoImpl implements FileIndexDao {
         // limit order by
         sql.append(" order by depth ").append(sort).append(" limit ").append(limit).append(" offset 0 ");
 
-        System.out.println(sql);
         List<Thing> list = new ArrayList<>();
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -96,6 +95,30 @@ public class FileIndexDaoImpl implements FileIndexDao {
         }
         return list;
     }
+
+    /**
+     * 删除
+     * @param thing
+     */
+    @Override
+    public void delete(Thing thing) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try{
+            // 获取连接
+            connection = ds.getConnection();
+            // sql语句
+            String sql = "delete from file_index where path like '" + thing.getPath() + "%'";
+            preparedStatement = connection.prepareStatement(sql);
+            // 执行
+            preparedStatement.execute();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }finally {
+            release(null,preparedStatement,connection);
+        }
+    }
+
     private void release(ResultSet resultSet,PreparedStatement preparedStatement,Connection connection){
 
         if(resultSet != null){
