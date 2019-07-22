@@ -8,9 +8,21 @@ import java.util.Set;
  * 文件类型
  */
 public enum FileType {
+    /**
+     * 文本文件
+     */
     IMG("png","jpeg","jpg","gif","img"),
+    /**
+     * 图片文件
+     */
     DOC("ppt","pptx","doc","docx","pdf"),
+    /**
+     * 二进制文件
+     */
     BIN("exe","sh","jar","msi"),
+    /**
+     * 压缩文件
+     */
     ARCHIVE("zip","rar"),
     OTHER("*");
     private Set<String> set = new HashSet<>();
@@ -20,12 +32,12 @@ public enum FileType {
 
     /**
      * 根据文件扩展名获取文件类型
-     * @param extend
+     * @param extendName
      * @return
      */
-    public static FileType lookUp(String extend){
+    public static FileType lookUp(String extendName){
         for(FileType fileType : FileType.values()){
-            if(fileType.set.contains(extend)){
+            if(fileType.set.contains(extendName)){
                 return fileType;
             }
         }

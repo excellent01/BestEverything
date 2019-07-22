@@ -1,13 +1,10 @@
 package com.xust.everything.core.dao;
-
 import com.alibaba.druid.pool.DruidDataSource;
-
 import javax.sql.DataSource;
 import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
  *  生产DataSource的工厂
@@ -26,12 +23,10 @@ public final class DataSourceFactory {
                 if(dataSource == null){
                     //实例化
                     dataSource = new DruidDataSource();
-                    // 反射实例化对象
+                    //  初始化操作
                     dataSource.setDriverClassName("org.h2.Driver");
-
                     // 获取当前工程路径 System.getProperty("user.dir")
                     String dir = System.getProperty("user.dir");
-
                     // 采用H2嵌入式的数据库，数据库以本地文件存储
                     dataSource.setUrl("jdbc:h2:" + dir + File.separator + "best_Everything");
                 }
@@ -40,6 +35,9 @@ public final class DataSourceFactory {
         return dataSource;
     }
 
+    /**
+     * 数据库的初始化工作
+     */
     public  static void initDatabase() {
         // 1、获取数据源
         DataSource ds = DataSourceFactory.dataSource();

@@ -21,8 +21,8 @@ org.h2.jdbc.JdbcSQLException: Column "DOC" not found; SQL statement:
 	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:76)
 	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:304)
 	at com.alibaba.druid.pool.DruidPooledConnection.prepareStatement(DruidPooledConnection.java:318)
-	at com.xust.everything.core.dao.impl.FileIndexImpl.search(FileIndexImpl.java:99)
-	at com.xust.everything.core.dao.impl.FileIndexImpl.main(FileIndexImpl.java:156)
+	at com.xust.everything.core.dao.impl.FileIndexDaoImpl.search(FileIndexImpl.java:99)
+	at com.xust.everything.core.dao.impl.FileIndexDaoImpl.main(FileIndexImpl.java:156)
 2019-07-21 19:32:19 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLException: Column "IMG" not found; SQL statement:
  select name,path,depth,file_type from file_index  where  name like '%简历%'  and file_type = IMG order by depth Asc limit 2 offset 0  [42122-197]
@@ -40,8 +40,8 @@ org.h2.jdbc.JdbcSQLException: Column "IMG" not found; SQL statement:
 	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:76)
 	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:304)
 	at com.alibaba.druid.pool.DruidPooledConnection.prepareStatement(DruidPooledConnection.java:318)
-	at com.xust.everything.core.dao.impl.FileIndexImpl.search(FileIndexImpl.java:99)
-	at com.xust.everything.core.dao.impl.FileIndexImpl.main(FileIndexImpl.java:156)
+	at com.xust.everything.core.dao.impl.FileIndexDaoImpl.search(FileIndexImpl.java:99)
+	at com.xust.everything.core.dao.impl.FileIndexDaoImpl.main(FileIndexImpl.java:156)
 2019-07-21 19:36:46 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLException: Column "DOC" not found; SQL statement:
  select name,path,depth,file_type from file_index  where  name like '%简历%'  and file_type = DOC order by depth Asc limit 2 offset 0  [42122-197]
@@ -59,8 +59,8 @@ org.h2.jdbc.JdbcSQLException: Column "DOC" not found; SQL statement:
 	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:76)
 	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:304)
 	at com.alibaba.druid.pool.DruidPooledConnection.prepareStatement(DruidPooledConnection.java:318)
-	at com.xust.everything.core.dao.impl.FileIndexImpl.search(FileIndexImpl.java:99)
-	at com.xust.everything.core.dao.impl.FileIndexImpl.main(FileIndexImpl.java:155)
+	at com.xust.everything.core.dao.impl.FileIndexDaoImpl.search(FileIndexImpl.java:99)
+	at com.xust.everything.core.dao.impl.FileIndexDaoImpl.main(FileIndexImpl.java:155)
 2019-07-21 19:41:40 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLException: Column "DOC" not found; SQL statement:
  select name,path,depth,file_type from file_index  where  name like '%简历%'  and file_type = DOC order by depth Asc limit 2 offset 0  [42122-197]
@@ -78,5 +78,5 @@ org.h2.jdbc.JdbcSQLException: Column "DOC" not found; SQL statement:
 	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:76)
 	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:304)
 	at com.alibaba.druid.pool.DruidPooledConnection.prepareStatement(DruidPooledConnection.java:318)
-	at com.xust.everything.core.dao.impl.FileIndexImpl.search(FileIndexImpl.java:99)
-	at com.xust.everything.core.dao.impl.FileIndexImpl.main(FileIndexImpl.java:156)
+	at com.xust.everything.core.dao.impl.FileIndexDaoImpl.search(FileIndexImpl.java:99)
+	at com.xust.everything.core.dao.impl.FileIndexDaoImpl.main(FileIndexImpl.java:156)

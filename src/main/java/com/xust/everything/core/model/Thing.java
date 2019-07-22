@@ -9,7 +9,7 @@ import lombok.Data;
  * @date 2019/7/21 16:14
  */
 @Data
-// get set toString 自动生成
+
 public class Thing {
 
     /**

@@ -12,5 +12,6 @@ public interface FileSearch {
      * @param condition
      * @return
      */
+    public List<Thing> search(Condition condition);
 
 }

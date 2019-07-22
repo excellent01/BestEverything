@@ -1,6 +1,5 @@
 package com.xust.everything.core.dao.impl;
-import com.xust.everything.core.dao.DataSourceFactory;
-import com.xust.everything.core.dao.FileIndex;
+import com.xust.everything.core.dao.FileIndexDao;
 import com.xust.everything.core.model.Condition;
 import com.xust.everything.core.model.FileType;
 import com.xust.everything.core.model.Thing;
@@ -16,14 +15,11 @@ import java.util.List;
  * @auther plg
  * @date 2019/7/21 18:25
  */
-public class FileIndexImpl  implements FileIndex {
-
+public class FileIndexDaoImpl implements FileIndexDao {
     private final DataSource ds;
-
-    public FileIndexImpl(DataSource ds) {
+    public FileIndexDaoImpl(DataSource ds) {
         this.ds = ds;
     }
-
     @Override
     public void insert(Thing thing) {
         Connection connection = null;
@@ -45,24 +41,9 @@ public class FileIndexImpl  implements FileIndex {
         }catch(SQLException e){
             e.printStackTrace();
         }finally {
-            if(preparedStatement != null){
-                try {
-                    preparedStatement.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if(connection != null){
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-
+            release(null,preparedStatement,connection);
         }
     }
-
     @Override
     public List<Thing> search(Condition condition) {
 
@@ -111,52 +92,33 @@ public class FileIndexImpl  implements FileIndex {
         }catch(SQLException e){
             e.printStackTrace();
         }finally {
-
-            if(resultSet != null){
-                try {
-                    resultSet.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if(preparedStatement != null){
-                try {
-                    preparedStatement.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if(connection != null){
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-
+            release(resultSet,preparedStatement,connection);
         }
         return list;
     }
+    private void release(ResultSet resultSet,PreparedStatement preparedStatement,Connection connection){
 
-
-    public static void main(String[] args) {
-        FileIndex fileIndex = new FileIndexImpl(DataSourceFactory.dataSource());
-        Thing thing = new Thing();
-        thing.setName("简历.ppt");
-        thing.setPath("D:\\a\\test\\简历.ppt");
-        thing.setDepth(3);
-        thing.setFileType(FileType.DOC);
-        fileIndex.insert(thing);
-
-        Condition condition = new Condition();
-        condition.setName("简历");
-        condition.setLimit(2);
-        condition.setOrderByASC(true);
-        condition.setFileType("IMG");
-        List<Thing> list = fileIndex.search(condition);
-        for(Thing thing1 : list){
-            System.out.println(thing);
+        if(resultSet != null){
+            try {
+                resultSet.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-
+        if(preparedStatement != null){
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if(connection != null){
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
+
 }
